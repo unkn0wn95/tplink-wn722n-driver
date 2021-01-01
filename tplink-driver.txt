@@ -1,0 +1,15 @@
+tp-link Tl-wn722n v2/v3 Monitoring Mode:
+(https://gist.github.com/momenbasel/0bbaea4014503c659cc93705466c295d)
+
+apt update -y && apt upgrade -y && apt dist-upgrade
+sudo apt-get install linux-headers-$(uname -r) -y
+sudo apt install bc -y
+git clone https://github.com/aircrack-ng/rtl8188eus
+cd rtl8188eus
+sudo rmmod r8188eu.ko
+sudo -i
+echo "blacklist r8188eu.ko" > "/etc/modprobe.d/realtek.conf"
+exit
+make
+sudo make install
+sudo modprobe 8188eu
